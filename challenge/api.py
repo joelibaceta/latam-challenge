@@ -84,6 +84,16 @@ class PredictionRequest(BaseModel):
 
 app = fastapi.FastAPI()
 
+@app.get("/health", status_code=200)
+async def get_health() -> Dict[str, str]:
+    """
+    Health check endpoint to verify the service is running.
+
+    Returns:
+        dict: A dictionary indicating the service status.
+    """
+    return {"status": "OK"}
+
 
 @app.get("/health", status_code=200)
 async def get_health() -> Dict[str, str]:
