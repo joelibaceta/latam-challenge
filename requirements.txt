@@ -1,6 +1,11 @@
 fastapi
 pydantic
 uvicorn
+gunicorn
 numpy
-pandaspandas
+pandas
 scikit-learn
+xgboost
+matplotlib
+seaborn
+notebook
