@@ -94,18 +94,6 @@ async def get_health() -> Dict[str, str]:
     """
     return {"status": "OK"}
 
-
-@app.get("/health", status_code=200)
-async def get_health() -> Dict[str, str]:
-    """
-    Health check endpoint to verify the service is running.
-
-    Returns:
-        dict: A dictionary indicating the service status.
-    """
-    return {"status": "OK"}
-
-
 @app.post("/predict", status_code=200)
 async def post_predict(request: PredictionRequest) -> Dict[str, List[int]]:
     """
