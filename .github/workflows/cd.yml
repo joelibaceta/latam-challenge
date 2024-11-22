@@ -31,17 +31,19 @@ jobs:
       - name: Run Tests
         run: make model-test
 
-      # Step 5: Set up Google Cloud SDK
-      - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
+      # Step 5: Auth with Google
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v2'
         with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+      # Step 5: Set up Google Cloud SDK
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
 
       # Step 6: Authenticate with Google Cloud
       - name: Authenticate with Google Cloud
         run: |
-          gcloud auth activate-service-account --key-file=${{ secrets.GCP_SA_KEY }}
           gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
 
       # Step 7: Deploy to Google App Engine

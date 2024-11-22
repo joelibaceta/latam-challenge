@@ -9,3 +9,5 @@ xgboost
 matplotlib
 seaborn
 notebook
+pytest
+pytest-cov
